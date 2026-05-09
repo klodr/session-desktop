@@ -90,7 +90,7 @@
     "electron-localshortcut": "^3.2.1",
     "electron-updater": "^6.3.9",
     "emoji-mart": "https://github.com/session-foundation/session-emoji-mart/releases/download/v5.6.0/emoji-mart-v5.6.0.tgz",
-    "filesize": "10.1.6",
+    "filesize": "11.0.17",
     "firstline": "^2.0.2",
     "focus-trap-react": "^11.0.4",
     "framer-motion": "^12.5.0",
