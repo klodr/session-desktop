@@ -73,7 +73,7 @@
     "@emoji-mart/data": "https://github.com/session-foundation/session-emoji-mart/releases/download/v5.6.0/emoji-mart-data-v1.2.1.tgz",
     "@emoji-mart/react": "https://github.com/session-foundation/session-emoji-mart/releases/download/v5.6.0/emoji-mart-react-v1.1.1.tgz",
     "@emotion/is-prop-valid": "1.2.2",
-    "@emotion/memoize": "0.8.1",
+    "@emotion/memoize": "0.9.0",
     "@reduxjs/toolkit": "^2.11.1",
     "@signalapp/sqlcipher": "3.1.0",
     "abort-controller": "3.0.0",
