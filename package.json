@@ -106,7 +106,7 @@
     "node-fetch": "^2.7.0",
     "os-locale": "5.0.0",
     "p-retry": "^4.6.2",
-    "p-timeout": "4.1.0",
+    "p-timeout": "7.0.1",
     "pino": "^9.6.0",
     "protobufjs": "^7.4.0",
     "punycode": "^2.3.1",
