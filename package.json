@@ -130,7 +130,7 @@
     "sharp": "https://github.com/session-foundation/sharp/releases/download/v0.34.5/sharp-0.34.5.tgz",
     "styled-components": "6.1.19",
     "uuid": "11.1.0",
-    "webrtc-adapter": "^4.2.2",
+    "webrtc-adapter": "^9.0.5",
     "zod": "4.1.13"
   },
   "devDependencies": {
