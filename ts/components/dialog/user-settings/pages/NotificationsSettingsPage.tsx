@@ -6,6 +6,7 @@ import { tr } from '../../../../localization/localeTools';
 import { type UserSettingsModalState } from '../../../../state/ducks/modalDialog';
 import {
   PanelButtonGroup,
+  PanelButtonText,
   PanelButtonTextWithSubText,
   PanelLabelWithDescription,
 } from '../../../buttons/panel/PanelButton';
@@ -20,10 +21,11 @@ import { SettingsKey } from '../../../../data/settings-key';
 import { SettingsToggleBasic } from '../components/SettingsToggleBasic';
 import { Notifications } from '../../../../util/notifications';
 import { isAudioNotificationSupported } from '../../../../types/Settings';
-import { SpacerLG } from '../../../basic/Text';
+import { SpacerLG, SpacerSM } from '../../../basic/Text';
 import { SessionButton, SessionButtonColor } from '../../../basic/SessionButton';
 import { PanelRadioButton } from '../../../buttons/panel/PanelRadioButton';
 import { UserSettingsModalContainer } from '../components/UserSettingsModalContainer';
+import { getAvailableRingtones, DEFAULT_RINGTONE_VALUE } from '../../../../session/utils/Ringtones';
 
 const NotificationType = { message: 'message', name: 'name', count: 'count', off: 'off' } as const;
 
@@ -33,6 +35,58 @@ const StyledButtonContainer = styled.div`
   flex-direction: column;
   padding-inline-start: var(--margins-lg);
 `;
+
+const StyledSectionLabel = styled.p`
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--margins-sm) var(--margins-lg) 0;
+  margin: 0;
+`;
+
+function playPreviewSound(src: string) {
+  const audio = new Audio(src);
+  audio.volume = 0.6;
+  void audio.play().catch(window.log.info);
+}
+
+function RingtoneSelector() {
+  const forceUpdate = useUpdate();
+  const saved =
+    (window.getSettingValue(SettingsKey.settingsRingtone) as string) || DEFAULT_RINGTONE_VALUE;
+  const [selected, setSelected] = useState(saved);
+  const options = getAvailableRingtones();
+
+  return (
+    <>
+      <StyledSectionLabel>{'Ringtone (calls)'}</StyledSectionLabel>
+      <PanelButtonGroup>
+        {options.map(({ label, value }) => (
+          <PanelRadioButton
+            key={value}
+            textElement={
+              <PanelButtonText label={label} textDataTestId={"set-ringtone-text" as any} />
+            }
+            value={value}
+            isSelected={selected === value}
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onSelect={async () => {
+              await window.setSettingValue(SettingsKey.settingsRingtone, value);
+              setSelected(value);
+              playPreviewSound(value);
+              forceUpdate();
+            }}
+            rowDataTestId={"set-ringtone-row" as any}
+            radioInputDataTestId={"set-ringtone-radio" as any}
+          />
+        ))}
+      </PanelButtonGroup>
+      <SpacerSM />
+    </>
+  );
+}
 
 function NotificationsContent({
   notificationsAreEnabled,
@@ -106,6 +160,8 @@ function NotificationsContent({
           </PanelButtonGroup>
         </>
       )}
+
+      <RingtoneSelector />
 
       <PanelLabelWithDescription
         title={{ token: 'notificationDisplay' }}

@@ -1,8 +1,14 @@
-const sound = './sound/ringing.mp3';
+import { SettingsKey } from '../../data/settings-key';
+
+const DEFAULT_RINGTONE = 'sound/ringing.mp3';
 
 let currentlyRinging = false;
-
 let ringingAudio: HTMLAudioElement | undefined;
+
+function getRingtonePath(): string {
+  const saved = window.getSettingValue(SettingsKey.settingsRingtone) as string;
+  return saved || DEFAULT_RINGTONE;
+}
 
 function stopRinging() {
   if (ringingAudio) {
@@ -12,8 +18,9 @@ function stopRinging() {
 }
 
 function startRinging() {
-  if (!ringingAudio) {
-    ringingAudio = new Audio(sound);
+  const src = getRingtonePath();
+  if (!ringingAudio || ringingAudio.src !== src) {
+    ringingAudio = new Audio(src);
     ringingAudio.loop = true;
     ringingAudio.volume = 0.6;
   }

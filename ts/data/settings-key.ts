@@ -70,6 +70,7 @@ export const SettingsKey = {
   blocked: 'blocked',
   numberId: 'number_id',
   localAttachmentEncryptionKey,
+  settingsRingtone: 'ringtone-setting',
   spellCheckEnabled: 'spell-check',
   settingsTheme: 'settingsTheme',
   urlInteractions: 'urlInteractions',
