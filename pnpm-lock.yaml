@@ -130,8 +130,8 @@ importers:
         specifier: ^4.6.2
         version: 4.6.2
       p-timeout:
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 8.1.0
+        version: 8.1.0
       pino:
         specifier: ^9.6.0
         version: 9.6.0
@@ -4544,9 +4544,9 @@ packages:
     resolution: {integrity: sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==}
     engines: {node: '>=8'}
 
-  p-timeout@4.1.0:
-    resolution: {integrity: sha512-+/wmHtzJuWii1sXn3HCuH/FTwGhrp4tmJTxSKJbfS+vkipci6osxXM5mY0jUiRzWKMTgUT8l7HFbeSwZAynqHw==}
-    engines: {node: '>=10'}
+  p-timeout@8.1.0:
+    resolution: {integrity: sha512-vajKtRMD6MqeaVhwkUVwoFTBEXwxn4MDUV9M1A8FNG5KS7Tg3nN0a9RrKjGYI8LApm0zHHcGSo6JTFD+2jzrmA==}
+    engines: {node: '>=22'}
 
   p-try@2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
@@ -10544,7 +10544,7 @@ snapshots:
       '@types/retry': 0.12.0
       retry: 0.13.1
 
-  p-timeout@4.1.0: {}
+  p-timeout@8.1.0: {}
 
   p-try@2.2.0: {}
 
