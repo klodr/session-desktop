@@ -300,9 +300,9 @@ export function useIsPinned(convoId?: string) {
   const convoProps = useConversationPropsById(convoId);
   return Boolean(
     convoProps &&
-      isNumber(convoProps.priority) &&
-      isFinite(convoProps.priority) &&
-      convoProps.priority > 0
+    isNumber(convoProps.priority) &&
+    isFinite(convoProps.priority) &&
+    convoProps.priority > 0
   );
 }
 
@@ -310,9 +310,9 @@ export function useIsHidden(convoId?: string) {
   const convoProps = useConversationPropsById(convoId);
   return Boolean(
     convoProps &&
-      isNumber(convoProps.priority) &&
-      isFinite(convoProps.priority) &&
-      convoProps.priority < 0
+    isNumber(convoProps.priority) &&
+    isFinite(convoProps.priority) &&
+    convoProps.priority < 0
   );
 }
 
@@ -336,17 +336,17 @@ export function useIsIncomingRequest(convoId?: string) {
 
   return Boolean(
     convoProps &&
-      hasValidIncomingRequestValues({
-        id: convoProps.id,
-        isMe: convoProps.isMe || false,
-        isApproved: convoProps.isApproved || false,
-        isPrivate: convoProps.isPrivate || false,
-        isBlocked: convoProps.isBlocked || false,
-        didApproveMe: convoProps.didApproveMe || false,
-        activeAt: convoProps.activeAt || 0,
-        invitePending,
-        priority: convoProps.priority,
-      })
+    hasValidIncomingRequestValues({
+      id: convoProps.id,
+      isMe: convoProps.isMe || false,
+      isApproved: convoProps.isApproved || false,
+      isPrivate: convoProps.isPrivate || false,
+      isBlocked: convoProps.isBlocked || false,
+      didApproveMe: convoProps.didApproveMe || false,
+      activeAt: convoProps.activeAt || 0,
+      invitePending,
+      priority: convoProps.priority,
+    })
   );
 }
 
@@ -358,14 +358,14 @@ export function useIsOutgoingRequest(convoId?: string) {
 
   return Boolean(
     convoProps &&
-      hasValidOutgoingRequestValues({
-        isMe: convoProps.isMe || false,
-        isApproved: convoProps.isApproved || false,
-        didApproveMe: convoProps.didApproveMe || false,
-        isPrivate: convoProps.isPrivate || false,
-        isBlocked: convoProps.isBlocked || false,
-        activeAt: convoProps.activeAt || 0,
-      })
+    hasValidOutgoingRequestValues({
+      isMe: convoProps.isMe || false,
+      isApproved: convoProps.isApproved || false,
+      didApproveMe: convoProps.didApproveMe || false,
+      isPrivate: convoProps.isPrivate || false,
+      isBlocked: convoProps.isBlocked || false,
+      activeAt: convoProps.activeAt || 0,
+    })
   );
 }
 

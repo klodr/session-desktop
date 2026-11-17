@@ -16,8 +16,7 @@ export const encryptAttachmentBufferRenderer = async (
   }
 
   const key = (await Data.getItemById(SettingsKey.localAttachmentEncryptionKey))?.value as
-    | string
-    | undefined;
+    string | undefined;
   if (!key) {
     throw new TypeError(
       "'encryptAttachmentBuffer' needs a key set in local_attachment_encrypted_key"

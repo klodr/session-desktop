@@ -753,8 +753,8 @@ function getPubkeysInPublicConversation(conversationId: string) {
 
   const hasBlindOn = Boolean(
     conversation.capabilities &&
-      isArray(conversation.capabilities) &&
-      conversation.capabilities?.includes('blind')
+    isArray(conversation.capabilities) &&
+    conversation.capabilities?.includes('blind')
   );
 
   const whereClause = hasBlindOn ? "AND source LIKE '15%'" : ''; // the LIKE content has to be ' and not "

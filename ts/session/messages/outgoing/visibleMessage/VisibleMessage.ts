@@ -60,9 +60,7 @@ export interface Quote {
 }
 
 export type OutgoingProMessageDetailsOrProto =
-  | OutgoingProMessageDetails
-  | SignalService.ProMessage
-  | null;
+  OutgoingProMessageDetails | SignalService.ProMessage | null;
 
 export type WithProMessageDetailsOrProto = {
   /**

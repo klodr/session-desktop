@@ -50,9 +50,9 @@ const getMessageByReaction = async (
       const author = item.get('source');
       return Boolean(
         messageTimestamp &&
-          messageTimestamp === originalMessageId &&
-          author &&
-          author === originalMessageAuthor
+        messageTimestamp === originalMessageId &&
+        author &&
+        author === originalMessageAuthor
       );
     });
   }

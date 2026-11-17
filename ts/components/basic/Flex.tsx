@@ -20,13 +20,7 @@ export interface FlexProps {
   $flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
   $flexGap?: string;
   $alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
+    'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'initial' | 'inherit';
   // Child Props
   $flexGrow?: number;
   $flexShrink?: number;
