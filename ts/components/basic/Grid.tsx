@@ -19,21 +19,9 @@ export interface GridProps {
   $justifyItems?: 'start' | 'end' | 'center' | 'stretch';
   $alignItems?: 'stretch' | 'center' | 'start' | 'end' | 'baseline';
   $justifyContent?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'stretch'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly';
+    'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around' | 'space-evenly';
   $alignContent?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'stretch'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly';
+    'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around' | 'space-evenly';
   // Grid Item Props
   $gridColumn?: string;
   $gridRow?: string;

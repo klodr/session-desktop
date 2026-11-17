@@ -32,10 +32,7 @@ export type BlindingConfig = typeof BlindedConfigValue;
 export type UtilitiesConfig = typeof UtilitiesValue;
 
 export type ConfigWrapperUser =
-  | UserConfig
-  | ContactsConfig
-  | UserGroupsConfig
-  | ConvoInfoVolatileConfig;
+  UserConfig | ContactsConfig | UserGroupsConfig | ConvoInfoVolatileConfig;
 
 export type ConfigWrapperGroup = MetaGroupConfig;
 
@@ -52,14 +49,11 @@ export type ConfigWrapperGroupDetailed = 'GroupInfo' | 'GroupMember' | 'GroupKey
 export type ConfigWrapperObjectTypesDetailed = ConfigWrapperUser | ConfigWrapperGroupDetailed;
 
 type UserConfigFunctions =
-  | [UserConfig, ...BaseConfigActions]
-  | [UserConfig, ...UserConfigActionsType];
+  [UserConfig, ...BaseConfigActions] | [UserConfig, ...UserConfigActionsType];
 type ContactsConfigFunctions =
-  | [ContactsConfig, ...BaseConfigActions]
-  | [ContactsConfig, ...ContactsConfigActionsType];
+  [ContactsConfig, ...BaseConfigActions] | [ContactsConfig, ...ContactsConfigActionsType];
 type UserGroupsConfigFunctions =
-  | [UserGroupsConfig, ...BaseConfigActions]
-  | [UserGroupsConfig, ...UserGroupsConfigActionsType];
+  [UserGroupsConfig, ...BaseConfigActions] | [UserGroupsConfig, ...UserGroupsConfigActionsType];
 type ConvoInfoVolatileConfigFunctions =
   | [ConvoInfoVolatileConfig, ...BaseConfigActions]
   | [ConvoInfoVolatileConfig, ...ConvoInfoVolatileConfigActionsType];

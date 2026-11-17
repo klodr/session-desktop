@@ -93,11 +93,11 @@ export const SessionQuotedMessageComposition = () => {
   const { hasAttachments, firstImageLikeAttachment } = checkHasAttachments(attachments);
   const isImage = Boolean(
     firstImageLikeAttachment &&
-      GoogleChrome.isImageTypeSupported(firstImageLikeAttachment.contentType)
+    GoogleChrome.isImageTypeSupported(firstImageLikeAttachment.contentType)
   );
   const isVideo = Boolean(
     firstImageLikeAttachment &&
-      GoogleChrome.isVideoTypeSupported(firstImageLikeAttachment.contentType)
+    GoogleChrome.isVideoTypeSupported(firstImageLikeAttachment.contentType)
   );
   const hasAudioAttachment = Boolean(hasAttachments && isAudio(attachments));
   const isGenericFile = !hasAudioAttachment && !isVideo && !isImage;

@@ -112,12 +112,7 @@ declare module 'react' {
     | 'export-logs'
     | 'hide-recovery-password';
   type SettingsExternalLinkButtons =
-    | 'faq'
-    | 'translate'
-    | 'support'
-    | 'feedback'
-    | 'pro-faq'
-    | 'pro-support';
+    'faq' | 'translate' | 'support' | 'feedback' | 'pro-faq' | 'pro-support';
 
   type SettingsMenuItems =
     | 'message-requests'
@@ -135,11 +130,7 @@ declare module 'react' {
     | 'donate';
 
   type ProFeatureItems =
-    | 'longer-messages'
-    | 'more-pins'
-    | 'animated-display-picture'
-    | 'badges'
-    | 'loads-more';
+    'longer-messages' | 'more-pins' | 'animated-display-picture' | 'badges' | 'loads-more';
 
   type MenuItems = 'block' | 'delete' | 'accept';
 

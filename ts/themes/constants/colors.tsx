@@ -90,13 +90,7 @@ const COLORS: ColorsType = {
 };
 
 export type PrimaryColorStateType =
-  | 'green'
-  | 'blue'
-  | 'yellow'
-  | 'pink'
-  | 'purple'
-  | 'orange'
-  | 'red';
+  'green' | 'blue' | 'yellow' | 'pink' | 'purple' | 'orange' | 'red';
 
 type PrimaryColorType = { id: PrimaryColorStateType; ariaLabel: string; color: string };
 
