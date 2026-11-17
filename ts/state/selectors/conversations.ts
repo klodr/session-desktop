@@ -356,7 +356,7 @@ const _getUnreadConversationRequests = (
   return filter(sortedConversationRequests, conversation => {
     return Boolean(
       conversation &&
-        ((conversation.unreadCount && conversation.unreadCount > 0) || conversation.isMarkedUnread)
+      ((conversation.unreadCount && conversation.unreadCount > 0) || conversation.isMarkedUnread)
     );
   });
 };

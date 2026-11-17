@@ -6,19 +6,7 @@ import {
 } from '../../util/i18n/formatting/expirationTimer';
 
 export type TimerSeconds =
-  | 0
-  | 5
-  | 10
-  | 30
-  | 60
-  | 300
-  | 1800
-  | 3600
-  | 21600
-  | 43200
-  | 86400
-  | 604800
-  | 1209600;
+  0 | 5 | 10 | 30 | 60 | 300 | 1800 | 3600 | 21600 | 43200 | 86400 | 604800 | 1209600;
 
 // prettier-ignore
 const VALUES: Array<TimerSeconds> = [

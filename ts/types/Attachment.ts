@@ -104,11 +104,11 @@ export function canDisplayImagePreview(attachments?: Array<AttachmentType>) {
 
   return Boolean(
     height &&
-      height > 0 &&
-      height <= ATTACHMENT_DEFAULT_MAX_SIDE &&
-      width &&
-      width > 0 &&
-      width <= ATTACHMENT_DEFAULT_MAX_SIDE
+    height > 0 &&
+    height <= ATTACHMENT_DEFAULT_MAX_SIDE &&
+    width &&
+    width > 0 &&
+    width <= ATTACHMENT_DEFAULT_MAX_SIDE
   );
 }
 

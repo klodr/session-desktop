@@ -19,8 +19,7 @@ export type ScopeWithId = 'message';
 export type ScopeWithoutId = Exclude<FocusScope, ScopeWithId>;
 
 type ScopeArgs =
-  | { scope: ScopeWithoutId; scopeId?: never }
-  | { scope: ScopeWithId; scopeId: string | 'all' };
+  { scope: ScopeWithoutId; scopeId?: never } | { scope: ScopeWithId; scopeId: string | 'all' };
 
 export function useFocusScope() {
   const topModalId = useTopModalId();

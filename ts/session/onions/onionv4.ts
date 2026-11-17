@@ -55,14 +55,12 @@ const decodeV4Response = (snodeResponse: SnodeResponseV4): DecodedResponseV4 | u
 
   const binary = snodeResponse.bodyBinary;
 
-  if (
-    !(
-      binary &&
-      binary.byteLength &&
-      binary[0] === lAscii &&
-      binary[binary.byteLength - 1] === eAscii
-    )
-  ) {
+  if (!(
+    binary &&
+    binary.byteLength &&
+    binary[0] === lAscii &&
+    binary[binary.byteLength - 1] === eAscii
+  )) {
     window?.log?.error(
       'decodeV4Response: response is missing prefix and suffix characters - Dropping response'
     );

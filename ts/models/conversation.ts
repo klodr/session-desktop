@@ -247,7 +247,7 @@ export class ConversationModel extends Model<ConversationAttributes> {
   public isClosedGroup(): boolean {
     return Boolean(
       (this.get('type') === ConversationTypeEnum.GROUP && PubKey.is05Pubkey(this.id)) ||
-        this.isClosedGroupV2()
+      this.isClosedGroupV2()
     );
   }
 

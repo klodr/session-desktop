@@ -11,11 +11,10 @@ type ClosedGroupMessageParams = ExpirableMessageParams & {
   groupId: string | PubKey;
 };
 
-interface ClosedGroupVisibleMessageParams
-  extends Omit<
-    ClosedGroupMessageParams,
-    'expireTimer' | 'expirationType' | 'dbMessageIdentifier' | 'createAtNetworkTimestamp'
-  > {
+interface ClosedGroupVisibleMessageParams extends Omit<
+  ClosedGroupMessageParams,
+  'expireTimer' | 'expirationType' | 'dbMessageIdentifier' | 'createAtNetworkTimestamp'
+> {
   groupId: string;
   chatMessageParams: VisibleMessageParams;
 }

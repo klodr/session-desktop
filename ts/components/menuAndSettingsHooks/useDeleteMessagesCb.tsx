@@ -39,9 +39,7 @@ const deleteMessageAllMyDevices = 'deleteMessageDevicesAll';
 const deleteMessageEveryone = 'deleteMessageEveryone';
 
 type MessageDeletionType =
-  | typeof deleteMessageDeviceOnly
-  | typeof deleteMessageAllMyDevices
-  | typeof deleteMessageEveryone;
+  typeof deleteMessageDeviceOnly | typeof deleteMessageAllMyDevices | typeof deleteMessageEveryone;
 
 /**
  * Offer to delete for everyone or not, based on what is currently selected
