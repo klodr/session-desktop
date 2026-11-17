@@ -119,7 +119,7 @@ importers:
         version: 4.3.24
       mic-recorder-to-mp3:
         specifier: ^2.2.2
-        version: 2.2.2(webrtc-adapter@4.2.2)
+        version: 2.2.2(webrtc-adapter@9.0.6)
       node-fetch:
         specifier: ^2.7.0
         version: 2.7.0(encoding@0.1.13)
@@ -202,8 +202,8 @@ importers:
         specifier: 11.1.1
         version: 11.1.1
       webrtc-adapter:
-        specifier: ^4.2.2
-        version: 4.2.2
+        specifier: ^9.0.6
+        version: 9.0.6
       zod:
         specifier: 4.6.7
         version: 4.6.7
@@ -5125,8 +5125,8 @@ packages:
     resolution: {integrity: sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==}
     engines: {node: '>=0.10.0'}
 
-  sdp@2.12.0:
-    resolution: {integrity: sha512-jhXqQAQVM+8Xj5EjJGVweuEzgtGWb3tmEEpl3CLP3cStInSbVHSg0QWOGQzNq8pSID4JkpeV2mPqlMDLrm0/Vw==}
+  sdp@3.2.3:
+    resolution: {integrity: sha512-UYuY3JFaVa7Zc+rxxi8iblwD7mdloGxCzMEQIJPcCLiHKjjqMqLsruMkI+emgnYARkfHk4o7seEETABc4bwokg==}
 
   secure-json-parse@2.7.0:
     resolution: {integrity: sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==}
@@ -5724,8 +5724,8 @@ packages:
       webpack-cli:
         optional: true
 
-  webrtc-adapter@4.2.2:
-    resolution: {integrity: sha512-JV2mqgwd8K+n0YrwohZgpZceojJRmC+1CsSTNOTdjDOKwCpffeY49d/0lks7dzw+nMtz8XQs9yaUafXh4iCINg==}
+  webrtc-adapter@9.0.6:
+    resolution: {integrity: sha512-CHbl2ZQbxx164IgWRgzJno4hWtM4tFbRam1QfI3Yxhs3w/DvqluVxVWeXs3oL5/fbGkSNLKo0Ty5MgUWceNhog==}
     engines: {node: '>=6.0.0', npm: '>=3.10.0'}
 
   whatwg-encoding@2.0.0:
@@ -10152,10 +10152,10 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  mic-recorder-to-mp3@2.2.2(webrtc-adapter@4.2.2):
+  mic-recorder-to-mp3@2.2.2(webrtc-adapter@9.0.6):
     dependencies:
       lamejs: 1.2.1
-      webrtc-adapter: 4.2.2
+      webrtc-adapter: 9.0.6
 
   micromatch@4.0.8:
     dependencies:
@@ -11120,7 +11120,7 @@ snapshots:
 
   screenfull@5.2.0: {}
 
-  sdp@2.12.0: {}
+  sdp@3.2.3: {}
 
   secure-json-parse@2.7.0: {}
 
@@ -11791,9 +11791,9 @@ snapshots:
       - svgo
       - uglify-js
 
-  webrtc-adapter@4.2.2:
+  webrtc-adapter@9.0.6:
     dependencies:
-      sdp: 2.12.0
+      sdp: 3.2.3
 
   whatwg-encoding@2.0.0:
     dependencies:
