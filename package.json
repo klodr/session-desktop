@@ -130,7 +130,7 @@
     "semver": "^7.7.1",
     "sharp": "https://github.com/session-foundation/sharp/releases/download/v0.34.5/sharp-0.34.5.tgz",
     "styled-components": "6.1.19",
-    "uuid": "11.1.1",
+    "uuid": "14.0.3",
     "webrtc-adapter": "^4.2.2",
     "zod": "4.6.7"
   },
