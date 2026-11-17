@@ -103,9 +103,7 @@ export const getSearchResultsContactOnly = createSelector([getSearchResults], se
  * When type is MessageResultProps we render a MessageSearchResult
  */
 export type SearchResultsMergedListItem =
-  | string
-  | { contactConvoId: string; displayName?: string }
-  | MessageResultProps;
+  string | { contactConvoId: string; displayName?: string } | MessageResultProps;
 
 export const getSearchResultsList = createSelector([getSearchResults], searchState => {
   const { searchResultContactsAndGroups, searchResultMessages } = searchState;

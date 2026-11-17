@@ -126,10 +126,7 @@ const buildSyncExpireTimerMessage = (
 };
 
 export type SyncMessageType =
-  | VisibleMessage
-  | ExpirationTimerUpdateMessage
-  | MessageRequestResponse
-  | UnsendMessage;
+  VisibleMessage | ExpirationTimerUpdateMessage | MessageRequestResponse | UnsendMessage;
 
 export const buildSyncMessage = (
   dbMessageIdentifier: string,

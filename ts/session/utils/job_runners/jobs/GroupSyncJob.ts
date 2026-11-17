@@ -138,8 +138,7 @@ async function pushChangesToGroupSwarmIfNeeded({
   Partial<WithTimeoutMs> & {
     supplementalKeysSubRequest?: StoreGroupKeysSubRequest;
     deleteAllMessagesSubRequest?:
-      | DeleteAllFromGroupMsgNodeSubRequest
-      | DeleteAllFromGroupNodeSubRequest;
+      DeleteAllFromGroupMsgNodeSubRequest | DeleteAllFromGroupNodeSubRequest;
     extraStoreRequests: Array<StoreGroupMessageSubRequest>;
   }): Promise<RunJobResult> {
   // save the dumps to DB even before trying to push them, so at least we have an up to date dumps in the DB in case of crash, no network etc

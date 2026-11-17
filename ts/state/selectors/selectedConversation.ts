@@ -359,8 +359,7 @@ export function useSelectedExpireTimer(): number | undefined {
 }
 
 export function useSelectedConversationDisappearingMode():
-  | DisappearingMessageConversationModeType
-  | undefined {
+  DisappearingMessageConversationModeType | undefined {
   return useSelector((state: StateType) => getSelectedConversation(state)?.expirationMode);
 }
 
