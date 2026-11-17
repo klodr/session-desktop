@@ -82,8 +82,8 @@ importers:
         specifier: https://github.com/session-foundation/session-emoji-mart/releases/download/v5.6.2/emoji-mart-v5.6.2.tgz
         version: https://github.com/session-foundation/session-emoji-mart/releases/download/v5.6.2/emoji-mart-v5.6.2.tgz
       filesize:
-        specifier: 10.1.6
-        version: 10.1.6
+        specifier: 11.0.33
+        version: 11.0.33
       firstline:
         specifier: ^2.0.2
         version: 2.0.2
@@ -3253,9 +3253,9 @@ packages:
   filelist@1.0.6:
     resolution: {integrity: sha512-5giy2PkLYY1cP39p17Ech+2xlpTRL9HLspOfEgm0L6CwBXBTgsK5ou0JtzYuepxkaQ/tvhCFIJ5uXo0OrM2DxA==}
 
-  filesize@10.1.6:
-    resolution: {integrity: sha512-sJslQKU2uM33qH5nqewAwVB2QgR6w1aMNsYUp3aN5rMRyXEwJGmZvaWzeJFNTOXWlHQyBFCWrdj3fV/fsTOX8w==}
-    engines: {node: '>= 10.4.0'}
+  filesize@11.0.33:
+    resolution: {integrity: sha512-EVfT6unvzJUIxVoTN+xKdIpZOYH6jMao1g+Uym58eJMNzh2bxC/5Y9X4IP2nkXNV5UYr22fkOLVhBzkUW3UliQ==}
+    engines: {node: '>= 10.8.0'}
 
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -9228,7 +9228,7 @@ snapshots:
     dependencies:
       minimatch: 5.1.9
 
-  filesize@10.1.6: {}
+  filesize@11.0.33: {}
 
   fill-range@7.1.1:
     dependencies:
