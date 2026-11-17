@@ -16,6 +16,12 @@ module.exports = {
       node: {
         paths: [path.resolve(__dirname)],
       },
+      // Fallback for packages that only declare "exports" and no "main" (e.g. uuid 12+),
+      // which the node resolver cannot find. Tried after the node resolver.
+      typescript: {
+        project: 'tsconfig.json',
+        extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx'],
+      },
     },
   },
 
