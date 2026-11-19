@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import useMount from 'react-use/lib/useMount';
 import { getAppDispatch } from '../../../../state/dispatch';
 import { useOurConversationUsername, useOurAvatarPath } from '../../../../hooks/useParamSelector';
 import { UserUtils, ToastUtils } from '../../../../session/utils';
@@ -30,20 +29,14 @@ import { ModalPencilIcon } from '../../shared/ModalPencilButton';
 import { ProfileHeader, ProfileName } from '../components';
 import type { ProfileDialogModes } from '../ProfileDialogModes';
 import { tr } from '../../../../localization/localeTools';
-import { getIsProAvailableMemo } from '../../../../hooks/useIsProAvailable';
 import { setDebugMode } from '../../../../state/ducks/debug';
 import { useHideRecoveryPasswordEnabled } from '../../../../state/selectors/settings';
 import { OnionStatusLight } from '../../OnionStatusPathDialog';
 import { UserSettingsModalContainer } from '../components/UserSettingsModalContainer';
+import { getIsProAvailableMemo } from '../../../../hooks/useIsProAvailable';
 import { useCurrentUserHasExpiredPro, useCurrentUserHasPro } from '../../../../hooks/useHasPro';
-import { NetworkTime } from '../../../../util/NetworkTime';
-import { APP_URL, DURATION_SECONDS } from '../../../../session/constants';
-import { getFeatureFlag } from '../../../../state/ducks/types/releasedFeaturesReduxTypes';
+import { APP_URL } from '../../../../session/constants';
 import { useUserSettingsCloseAction } from './userSettingsHooks';
-import {
-  useProBackendProDetails,
-  useProBackendRefetch,
-} from '../../../../state/selectors/proBackendData';
 import { focusVisibleBoxShadowOutsetStr } from '../../../../styles/focusVisible';
 import { createButtonOnKeyDownForClickEventHandler } from '../../../../util/keyboardShortcuts';
 import { useDebugMode } from '../../../../state/selectors/debug';
@@ -330,8 +323,6 @@ const SessionInfo = () => {
 export const DefaultSettingPage = (modalState: UserSettingsModalState) => {
   const dispatch = getAppDispatch();
   const closeAction = useUserSettingsCloseAction(modalState);
-  const { t } = useProBackendProDetails();
-  const refetch = useProBackendRefetch();
 
   const profileName = useOurConversationUsername() || '';
   const [enlargedImage, setEnlargedImage] = useState(false);
@@ -349,15 +340,6 @@ export const DefaultSettingPage = (modalState: UserSettingsModalState) => {
     window.clipboard.writeText(us);
     ToastUtils.pushCopiedToClipBoard();
   }
-
-  useMount(() => {
-    if (!getFeatureFlag('proAvailable')) {
-      return;
-    }
-    if (NetworkTime.nowSeconds() > t + 1 * DURATION_SECONDS.MINUTES) {
-      void refetch();
-    }
-  });
 
   return (
     <UserSettingsModalContainer
