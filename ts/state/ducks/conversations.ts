@@ -50,7 +50,8 @@ export type UIMessageType =
   | 'call-notification'
   | 'interaction-notification'
   | 'message-request-response'
-  | 'regular-message';
+  | 'regular-message'
+  | 'unsupported-message';
 
 type MessageTypeIsControlMessage<T extends UIMessageType> = Extract<
   T,
@@ -97,6 +98,8 @@ type WithMessageRequestResponse = WithMessageTypeDetails<'message-request-respon
 
 type WithRegularMessage = WithMessageTypeDetails<'regular-message'>;
 
+type WithUnsupportedMessage = WithMessageTypeDetails<'unsupported-message'>;
+
 export type MessageModelPropsWithoutConvoProps = {
   propsForMessage: PropsForMessageWithoutConvoProps;
 } & (
@@ -107,6 +110,7 @@ export type MessageModelPropsWithoutConvoProps = {
   | WithMessageRequestResponse
   | WithInteractionNotification
   | WithRegularMessage
+  | WithUnsupportedMessage
   | WithGroupUpdateNotification
 );
 
@@ -331,7 +335,7 @@ export type ConversationsStateType = {
   messageInfoId: string | undefined;
   showRightPanel: boolean;
   selectedMessageIds: Array<string>;
-  quotedMessage?: ReplyingToMessageProps;
+  quotedMessageByConversation: Partial<Record<string, ReplyingToMessageProps>>;
   areMoreMessagesBeingFetched: boolean;
 
   /**
@@ -545,6 +549,7 @@ export function getEmptyConversationState(): ConversationsStateType {
     messageInfoId: undefined,
     showRightPanel: false,
     selectedMessageIds: [],
+    quotedMessageByConversation: {},
     areMoreMessagesBeingFetched: false, // top or bottom
     showScrollButton: false,
     mentionMembers: [],
@@ -943,7 +948,7 @@ const conversationsSlice = createSlice({
         selectedMessageIds: [],
 
         messageInfoId: undefined,
-        quotedMessage: undefined,
+        quotedMessageByConversation: state.quotedMessageByConversation,
 
         nextMessageToPlay: undefined,
         showScrollButton,
@@ -1022,7 +1027,17 @@ const conversationsSlice = createSlice({
       state: ConversationsStateType,
       action: PayloadAction<ReplyingToMessageProps | undefined>
     ) {
-      state.quotedMessage = action.payload;
+      const conversationId = action.payload?.convoId || state.selectedConversation;
+      if (!conversationId) {
+        return state;
+      }
+
+      if (action.payload) {
+        state.quotedMessageByConversation[conversationId] = action.payload;
+        return state;
+      }
+
+      delete state.quotedMessageByConversation[conversationId];
       return state;
     },
     quotedMessageToAnimate(

@@ -1,6 +1,7 @@
 import type { DecodedPro } from 'libsession_util_nodejs';
 import { isNil } from 'lodash';
 import { ProRevocationCache } from '../session/revocation_list/pro_revocation_list';
+import { NetworkTime } from '../util/NetworkTime';
 
 type DecodedProConstructorArgs = {
   id: string;
@@ -104,6 +105,28 @@ export abstract class BaseDecodedEnvelope {
   }
 
   /**
+   * Whether the proof this message arrived with entitles the message to Pro features right now.
+   *
+   * The three checks are separate because `validPro` is only the decode verdict — a signature the backend
+   * issued — and says nothing about whether that proof has since expired or been revoked. Reading it alone
+   * would hand Pro features to both.
+   *
+   * Judged at the current instant rather than at `sentAtMs`, matching what the sender's stored record
+   * answers today: a message is sized by whether the proof behind it is usable, not by whether it was
+   * usable when it was written. The per-message feature bitset asks the same question at send time — see
+   * processProDetailsForMsg — and the two instants have never agreed.
+   */
+  public proProofEntitlesFeaturesNow() {
+    if (!this.validPro) {
+      return false;
+    }
+    if (this.isProProofRevoked()) {
+      return false;
+    }
+    return !this.isProProofExpiredAtMs(NetworkTime.now());
+  }
+
+  /**
    * Returns true if there is a pro proof that is marked as revoked.
    * Note: this does not check for pro proof validity/expiry. Use `isProProofValidAtMs` for that.
    */
@@ -112,14 +135,44 @@ export abstract class BaseDecodedEnvelope {
       return false;
     }
     const alreadyRevoked = ProRevocationCache.isB64HashEffectivelyRevoked(
-      this.validPro.proProof.genIndexHashB64
+      this.validPro.proProof.revocationTagB64
     );
 
     return alreadyRevoked;
   }
 }
 
-export class SwarmDecodedEnvelope extends BaseDecodedEnvelope {}
+/**
+ * Where a 1o1 or group swarm message came from, exactly as retrieved, so one this client can't handle
+ * can be retained and replayed later through the same path.
+ */
+export type SwarmOrigin = {
+  swarmPublicKey: string;
+  namespace: number;
+  rawData: Uint8Array;
+  storedAtMs: number;
+};
+
+export class SwarmDecodedEnvelope extends BaseDecodedEnvelope {
+  public readonly swarmOrigin?: SwarmOrigin;
+
+  /**
+   * Set on every replay of a retained message. A replayed message is old, so it never notifies.
+   * `wasRead` carries over the read state of the placeholder it replaces, false if there was none.
+   */
+  public readonly replayedPlaceholder?: { wasRead: boolean };
+
+  constructor(
+    args: DecodedProConstructorArgs & {
+      swarmOrigin?: SwarmOrigin;
+      replayedPlaceholder?: { wasRead: boolean };
+    }
+  ) {
+    super(args);
+    this.swarmOrigin = args.swarmOrigin;
+    this.replayedPlaceholder = args.replayedPlaceholder;
+  }
+}
 
 export class SogsDecodedEnvelope extends BaseDecodedEnvelope {
   /**

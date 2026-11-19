@@ -54,7 +54,6 @@ import {
 import { formatRoundedUpTimeUntilTimestamp } from '../../../util/i18n/formatting/generics';
 import { LucideIcon } from '../../icon/LucideIcon';
 import { LUCIDE_ICONS_UNICODE } from '../../icon/lucide';
-import { getIsProAvailableMemo } from '../../../hooks/useIsProAvailable';
 import {
   clearAllCtaInteractions,
   getCtaInteractions,
@@ -62,6 +61,7 @@ import {
 } from '../../../util/ctaHistory';
 import { CTAVariant } from '../cta/types';
 import { isDevProd } from '../../../shared/env_vars';
+import { getIsProAvailableMemo } from '../../../hooks/useIsProAvailable';
 
 type DebugButtonProps = SessionButtonProps & { shiny?: boolean; hide?: boolean };
 
