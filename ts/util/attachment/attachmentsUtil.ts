@@ -55,7 +55,7 @@ export async function autoScaleFile(file: File, maxMeasurements?: MaxScaleSize) 
 
 export type StagedAttachmentImportedType = Omit<
   StagedAttachmentType,
-  'file' | 'url' | 'fileSize'
+  'file' | 'url' | 'fileSize' | 'stagedAttachmentId'
 > & { flags?: number };
 
 /**
@@ -164,14 +164,17 @@ export const saveAttachmentToDisk = async ({
   conversationId,
   index,
 }: {
-  attachment: AttachmentType;
+  attachment: AttachmentType & { path?: string };
   messageTimestamp: number;
   messageSender: string;
   conversationId: string;
   index: number;
 }) => {
+  const attachmentUrl = attachment.path
+    ? getAbsoluteAttachmentPath(attachment.path)
+    : attachment.url;
   const decryptedUrl = await DecryptedAttachmentsManager.getDecryptedMediaUrl(
-    attachment.url,
+    attachmentUrl,
     attachment.contentType,
     false
   );
